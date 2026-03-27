@@ -1,0 +1,67 @@
+/* 1. 仅针对编辑模式（实时预览）的普通文本行 */
+/* 排除列表 li、代码块 HyperMD-codeblock、标题等 */
+/* 1. 修正后的编辑模式行间距 - 只针对行容器本身 */
+.markdown-source-view.mod-cm6 .cm-content > .cm-line:not(.HyperMD-list-line):not(.HyperMD-codeblock):not(.HyperMD-header) {
+    padding-bottom: 10px !important; 
+    margin-bottom: 0 !important;
+    display: block !important; /* 确保容器高度计算正常 */
+}
+
+/* 2. 解决待办项1：消除表格上方的多余空白 */
+/* 针对实时预览模式下的表格部件及其前后行进行强制压缩 */
+.markdown-source-view.mod-cm6 .cm-content > .cm-table-widget,
+.markdown-source-view.mod-cm6 .cm-line:has(+ .cm-table-widget),
+.markdown-source-view.mod-cm6 .cm-table-widget + .cm-line {
+    padding-bottom: 0px !important;
+    margin-top: -15px !important; /* 这里用负边距强行把表格往上拽 */
+    margin-bottom: 0px !important;
+}
+
+/* 针对列表项 (li) 的间距 - 兼容实时预览和阅读模式 */
+
+/* 1. 实时预览模式 (Live Preview) */
+.markdown-source-view.mod-cm6 .cm-content .HyperMD-list-line {
+    padding-top: 5px !important;    /* 增加点与点之间的上方距离 */
+    padding-bottom: 5px !important; /* 增加点与点之间的下方距离 */
+    margin: 0 !important;            /* 清除多余边距防止错位 */
+}
+
+/* 2. 阅读模式 (Reading Mode) */
+.markdown-rendered li {
+    margin-top: 10px !important;
+    margin-bottom: 10px !important;
+}
+
+/* 3. 特殊修复：防止列表里的空行间距过大 */
+.markdown-source-view.mod-cm6 .cm-content .HyperMD-list-line.cm-line:empty {
+    padding: 0 !important;
+}
+
+/* 3. 强制修复代码块内部的异常间距和斑马纹 */
+/* 确保代码块内部行高紧凑，并尝试隐藏干扰背景 */
+.HyperMD-codeblock {
+    padding-bottom: 0 !important;
+    line-height: 1.4 !important;
+    background-image: none !important; /* 尝试干掉你截图里的条纹 */
+}
+
+
+/* 4. 阅读模式下的段落间距 */
+.markdown-rendered p {
+    margin-bottom: 1.2em !important;
+}
+
+/* 针对实时预览模式：列表结束后的下方间距 */
+/* 当列表行紧跟着一个非列表行时，增加底部空隙 */
+.markdown-source-view.mod-cm6 .cm-content .HyperMD-list-line:has(+ :not(.HyperMD-list-line)) {
+    padding-bottom: 15px !important; /* 这里的数值可以调大一点，比如 15px 或 20px */
+}
+
+/* 针对阅读模式：调整列表和段落之间的距离 */
+.markdown-rendered ul, 
+.markdown-rendered ol {
+    margin-bottom: 1.5em !important; /* 增加列表整体下方的外边距 */
+}
+
+
+

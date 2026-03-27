@@ -1,0 +1,9 @@
+{
+  "cssTheme": "Minimal",
+  "theme": "moonstone",
+  "enabledCssSnippets": [
+    "clean-code",
+    "head-height",
+    "spacing"
+  ]
+}

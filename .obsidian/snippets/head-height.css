@@ -1,0 +1,49 @@
+/* 针对一级标题 # */
+.markdown-source-view.mod-cm6 .cm-content > .cm-line:has(.cm-header-1) {   
+	padding-bottom: 8px !important;
+padding-top: 30px !important;    
+}
+
+/* 针对二级标题 ## */
+.markdown-source-view.mod-cm6 .cm-content > .cm-line:has(.cm-header-2) {
+    padding-bottom: 8px !important;
+padding-top: 30px !important;    
+}
+
+/* 针对三级标题 ### */
+.markdown-source-view.mod-cm6 .cm-content > .cm-line:has(.cm-header-3) {
+    padding-bottom: 8px !important;
+padding-top: 30px !important;    
+}
+
+/* 针对四级标题 #### */
+.markdown-source-view.mod-cm6 .cm-content > .cm-line:has(.cm-header-4) {
+    padding-bottom: 8px !important;
+padding-top: 30px !important;    
+}
+
+/* 针对五级标题 ##### */
+.markdown-source-view.mod-cm6 .cm-content > .cm-line:has(.cm-header-5) {
+    padding-bottom: 8px !important;
+padding-top: 30px !important;    
+}
+
+/* 针对六级标题 ###### */
+.markdown-source-view.mod-cm6 .cm-content > .cm-line:has(.cm-header-6) {
+    padding-bottom: 8px !important;
+padding-top: 30px !important;    
+}
+
+/* 当一个标题后面紧跟着另一个标题时，减小上方标题的底部间距 */
+.markdown-source-view.mod-cm6 .cm-line:has(.cm-header-1, .cm-header-2, .cm-header-3, .cm-header-4) + .cm-line:has(.cm-header-1, .cm-header-2, .cm-header-3, .cm-header-4, .cm-header-5, .cm-header-6) {
+    margin-top: -25px !important; /* 使用负外边距把第二个标题往上拽 */
+}
+
+/* 2. 【防守反击】针对普通文本后的标题进行“对冲” */
+/* 如果标题前面是普通文本行，我们通过负边距把间距“拉”回来一点 */
+.markdown-source-view.mod-cm6 .cm-line:not(.HyperMD-codeblock):not(.cm-header) + .cm-line:has([class^="cm-header-"]) {
+    margin-top: 10px !important; /* 这个数值越小，普通文本后的标题就越近 */
+}
+
+
+
