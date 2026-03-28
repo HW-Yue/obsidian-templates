@@ -7,15 +7,27 @@
     display: block !important; /* 确保容器高度计算正常 */
 }
 
-/* 2. 解决待办项1：消除表格上方的多余空白 */
-/* 针对实时预览模式下的表格部件及其前后行进行强制压缩 */
-.markdown-source-view.mod-cm6 .cm-content > .cm-table-widget,
-.markdown-source-view.mod-cm6 .cm-line:has(+ .cm-table-widget),
-.markdown-source-view.mod-cm6 .cm-table-widget + .cm-line {
-    padding-bottom: 0px !important;
-    margin-top: -15px !important; /* 这里用负边距强行把表格往上拽 */
-    margin-bottom: 0px !important;
+
+
+/* 1. 强力压缩表格上方紧邻的那一行 */
+.markdown-source-view.mod-cm6 .cm-line:has(+ .cm-table-widget) {
+    padding-bottom: 0px !important; /* 消除全局的 10px padding */
+    line-height: 1.2 !important;    /* 稍微收缩行高 */
+    min-height: 1em !important;
 }
+
+/* 2. 同时微调表格本身的顶部外边距 */
+.markdown-source-view.mod-cm6 .cm-content > .cm-table-widget {
+    margin-top: -12px !important;   /* 将表格向上提，抵消掉上方行可能残留的空白 */
+    display: block !important;
+}
+
+/* 3. 针对这一行输入内容后的情况 */
+.markdown-source-view.mod-cm6 .cm-line:has(+ .cm-table-widget) * {
+    vertical-align: bottom !important; /* 强制内容靠下对齐 */
+}
+
+
 
 /* 针对列表项 (li) 的间距 - 兼容实时预览和阅读模式 */
 
