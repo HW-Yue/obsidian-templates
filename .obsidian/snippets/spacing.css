@@ -64,4 +64,41 @@
 }
 
 
+/* 实时预览模式：针对分界符行 */
+.markdown-source-view.mod-cm6 .cm-content .hr.cm-line {
+    /* 强制压缩该行的高度和边距 */
+    padding-top: 0px !important;
+    padding-bottom: 0px !important;
+    margin-top: -25px !important;    /* 使用负边距抵消上方行的 padding */
+    margin-bottom: 5px !important;
+    min-height: 10px !important;     /* 防止行高被默认值撑大 */
+}
 
+/* 针对分界符内部的 hr 标签本身 */
+.markdown-source-view.mod-cm6 .cm-content .hr.cm-line hr {
+    margin-top: 0 !important;
+    margin-bottom: 0 !important;
+}
+
+/* 阅读模式 */
+.markdown-rendered hr {
+    margin-top: 15px !important;
+    margin-bottom: 15px !important;
+}
+
+
+/* 针对实时预览：既保留圆角，又增加下方空白 */
+.markdown-source-view.mod-cm6 .cm-content .HyperMD-codeblock-end {
+    /* 1. 必须设置为 block，margin 才会生效 */
+    display: block !important;
+    /* 2. 这里的数值就是你想要的空白高度 */
+    margin-bottom: 25px !important; 
+    /* 3. 显式指定圆角，防止被覆盖 (数值根据你插件的圆角大小微调) */
+    border-bottom-left-radius: 12px !important;
+    border-bottom-right-radius: 12px !important;
+}
+
+/* 针对阅读模式：同样的逻辑 */
+.markdown-rendered .code-styler-pre {
+    margin-bottom: 25px !important;
+}
